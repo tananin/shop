@@ -1,0 +1,189 @@
+[[-
+Форма оформления заказа
+
+[[!$order-checkout__form]]
+
+value="[[!+fi.fullname:default=`[[+modx.user.id:userinfo=`fullname`]]`:ne=`0`:show]]"
+value="[[!+fi.address:default=`[[+modx.user.id:userinfo=`address`]]`:ne=`0`:show]]"
+value="[[!+fi.email:default=`[[+modx.user.id:userinfo=`email`]]`:ne=`0`:show]]"
+
+
+
+
+
+<form class="form-horizontal" action="[[~[[*id]]]]" method="post">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Заполните поля:</legend>
+        <div class="registerMessage">[[+reg.error.message]]</div>
+
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Ваше Ф.И.О.<span class="zvezda">*</span></label>
+            <div class="col-md-8">
+                <input id="textinput" name="fullname" value="[[!+fi.fullname:default=`[[+modx.user.id:userinfo=`fullname`]]`:ne=`0`:show]]"
+                       type="text" placeholder="Фамилия Имя Отчество" class="form-control input-md" required>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="sds">Email<span class="zvezda">*</span>:</label>
+            <div class="col-md-8">
+                <input id="sds" name="email:email" value="[[!+fi.email:default=`[[+modx.user.id:userinfo=`email`]]`:ne=`0`:show]]" type="text" placeholder="user@mail.ru" class="form-control input-md" required>
+            </div>
+        </div>
+
+        <!-- Prepended text-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedtext">Телефон<span class="zvezda">*</span>:</label>
+            <div class="col-md-8">
+                <div class="input-group">
+                    <span class="input-group-addon">+7</span>
+                    <input id="prependedtext" name="phone" value="[[!+fi.phone:default=`[[+modx.user.id:userinfo=`phone`]]`:ne=`0`:show]]" class="form-control" placeholder="999-123-45-67" type="text"  required>
+                </div>
+                <p class="help-block">10 цифр</p>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Город</label>
+            <div class="col-md-8">
+                <input id="textinput" name="city" value="[[!+fi.city:default=`[[+modx.user.id:userinfo=`city`]]`:ne=`0`:show]]" type="text" placeholder="Укажите Ваш город" class="form-control input-md">
+                <span class="help-block">Москва</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Адрес:</label>
+            <div class="col-md-8">
+                <input id="textinput" name="address" value="[[!+fi.address:default=`[[+modx.user.id:userinfo=`address`]]`:ne=`0`:show]]" type="text" placeholder="ул. Ленина, дом 64, кв.34" class="form-control input-md">
+
+            </div>
+        </div>
+
+
+        <!-- Textarea -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textarea">Доп. информация</label>
+            <div class="col-md-8">
+                <textarea class="form-control" id="textarea" name="comment"></textarea>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="checkboxes">Новости</label>
+            <div class="col-md-8">
+                <div class="checkbox">
+                    <label for="checkboxes-0">
+                        <input type="checkbox" name="rassilka" id="checkboxes-0" value="1" checked>
+                        Получать информацию о новых спецпредложениях
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <input type="text" name="nospam:blank" value="" style="display:none;" />
+        <input type="hidden" name="order" value="1" />
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <div class="col-md-8">
+                <input type="submit" name="registerbtn" class="btn btn-primary" value="ПРОДАТЬ" />
+
+
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+
+]]
+
+
+<div class="basket_order_form">
+    <div class="block_title">Оформление продажи</div>
+
+    <p class="regist-text">Вы можете <a href="[[~39]]">зарегистрироваться</a> на нашем сайте, это позволит Вам отслеживать историю продаж. <a href="[[~39]]">Регистрация</a> не займёт более 2х минут, Вашего времени.</p>
+
+    <div ids="order_node_form_node_ajax">
+        <form class="node-form node-order-form" action="" method="post" id="order-node-form" accept-charset="UTF-8">
+            <div>
+                <div class="field-type-text field-name-field-order-fio field-widget-text-textfield form-wrapper"
+                     id="edit-field-order-fio">
+                    <div id="field-order-fio-add-more-wrapper">
+                        <div class="form-item form-type-textfield form-item-field-order-fio-und-0-value">
+                            <label for="edit-field-order-fio-und-0-value">Имя: <span class="form-required" title="Это поле обязательно для заполнения.">*</span></label>
+                            <input class="text-full form-text required" type="text" id="edit-field-order-fio-und-0-value" name="name" value="" size="60" maxlength="60" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-type-text field-name-field-order-addres field-widget-text-textfield form-wrapper"
+                     id="edit-field-order-addres">
+                    <div id="field-order-addres-add-more-wrapper">
+                        <div class="form-item form-type-textfield form-item-field-order-addres-und-0-value">
+                            <label for="edit-field-order-addres-und-0-value">Улица, номер
+                                дома: </label>
+                            <input class="text-full form-text" type="text"
+                                   id="edit-field-order-addres-und-0-value" name="address" value="" size="60" maxlength="255" >
+                        </div>
+                    </div>
+                </div>
+                <div class="field-type-email field-name-field-order-email field-widget-email-textfield form-wrapper"
+                     id="edit-field-order-email">
+                    <div id="field-order-email-add-more-wrapper">
+                        <div class="text-full-wrapper">
+                            <div class="form-item form-type-textfield form-item-field-order-email-und-0-email">
+                                <label for="edit-field-order-email-und-0-email">Электронный адрес:
+                                                        <span class="form-required" title="Это поле обязательно для заполнения.">*</span></label>
+                                <input type="text" id="edit-field-order-email-und-0-email" name="email" value="" size="60" maxlength="128" class="form-text required" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-type-text field-name-field-order-phone1 field-widget-text-textfield form-wrapper"
+                     id="edit-field-order-phone1">
+                    <div id="field-order-phone1-add-more-wrapper">
+                        <div class="form-item form-type-textfield form-item-field-order-phone1-und-0-value">
+                            <label for="edit-field-order-phone1-und-0-value">Номер телефона: <span class="form-required" title="Это поле обязательно для заполнения.">*</span></label>
+                            <input class="text-full form-text required" type="text" id="edit-field-order-phone1-und-0-value" name="phone" value="" size="60" maxlength="12" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field-type-text field-name-field-order-notes field-widget-text-textarea form-wrapper"
+                     id="edit-field-order-notes">
+                    <div id="field-order-notes-add-more-wrapper">
+                        <div class="form-item form-type-textarea form-item-field-order-notes-und-0-value">
+                            <label for="edit-field-order-notes-und-0-value">Примечание: </label>
+
+                            <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
+                                <textarea class="text-full form-textarea" id="edit-field-order-notes-und-0-value" name="message" cols="60" rows="5"></textarea>
+                                <div class="grippie"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions form-wrapper" id="edit-actions">
+
+
+                    <input type="submit" id="edit-submit" value="Оформить заказ" name="order" class="form-submit">
+                    &nbsp;&nbsp;
+                    <a href="[[~39]]" class="btn btn-primary">РЕГИСТРАЦИЯ</a>
+
+
+
+                    <input type="text" name="nospam:blank" value="" style="display:none;" />
+                    <input type="hidden" name="order" value="1" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

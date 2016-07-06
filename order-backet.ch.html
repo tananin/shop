@@ -1,0 +1,57 @@
+[[-
+Корзина оформления покупки.
+Страница оформления покупки, список выбранных товаров.
+
+[[!Shopkeeper3@prder]]
+
+ВНИМАНИЕ!!! редактировать через интерфейс админки MODx
+
+tpl_separator             Разделитель пустой и заполненной козины, обернуть в комментарии html
+<div data-shopcart="2"></div>    Корневой DIV корзины необходим для работы Ajax обновления
+
+
+Плэйсхолдэры
+------------------------------------------------
+[[+inner]]                      список товаров (по шаблону shop-backet-row);
+[[+price_total]]                общая цена товаров в корзине;
+[[+items_total]]                общее число товаров в корзине;
+[[+items_unique_total]]         общее число уникальных товаров в корзине;
+[[+plural]]                     слово "товар" во множественном числе в зависимости от числа выбранных товаров;
+[[+this_page_url]]              адрес текущей страницы;
+[[+empty_url]]                  ссылка для очистки корзины;
+[[+order_page_url]]             ссылка на страницу оформления заказа;
+[[+currency]]                   валюта товаров;
+[[+delivery_name]]              Название выбранной доставки.
+[[+delivery_price]]             Цена выбранной доставки.
+
+Пример:
+------------------------------------------------
+
+]]
+<div class="shop-cart" data-shopcart="2">
+    <div class="empty">
+        <div class="shop-cart-empty">Корзина пуста. <a href="[[~11]]">Выбрать картриджи</a></div>
+    </div>
+</div>
+
+<!--tpl_separator-->
+
+<div data-shopcart="2">
+    <div class="main_title"></div>
+
+    <div style="text-align:right; padding-bottom: 10px;"><a href="[[+empty_url]]" id="shk_butEmptyCart">Очистить корзину</a></div>
+
+    <div class="basket_page" >
+        <form action="[[+this_page_url]]#shopCart" method="post">
+            [[+inner]]
+        </form>
+    </div>
+
+    <div class="b_last">
+            <span class="text">Сумма всего:</span>
+            <div class="koll basket_items_count">[[+items_total]]шт.</div>
+            <div id="all_count_price" class="all_price">[[+price_total]]<span>[[+currency]]</span></div>
+        </div>
+</div>
+
+[[!$order-checkout]]

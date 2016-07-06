@@ -1,0 +1,65 @@
+[[-
+Корзина сайта
+[[!Shopkeeper3@shop]]
+
+ВНИМАНИЕ!!! редактировать через интерфейс админки MODx
+
+tpl_separator                   Разделитель пустой и заполненной козины, обернуть в комментарии html
+<div data-shopcart="1"></div>   Корневой DIV корзины необходим для работы Ajax обновления
+
+Плэйсхолдэры
+------------------------------------------------
+[[+inner]]                      список товаров (по шаблону shop-backet-row);
+[[+price_total]]                общая цена товаров в корзине;
+[[+items_total]]                общее число товаров в корзине;
+[[+items_unique_total]]         общее число уникальных товаров в корзине;
+[[+plural]]                     слово "товар" во множественном числе в зависимости от числа выбранных товаров;
+[[+this_page_url]]              адрес текущей страницы;
+[[+empty_url]]                  ссылка для очистки корзины;
+[[+order_page_url]]             ссылка на страницу оформления заказа;
+[[+currency]]                   валюта товаров;
+[[+delivery_name]]              Название выбранной доставки.
+[[+delivery_price]]             Цена выбранной доставки.
+
+Пример:
+------------------------------------------------
+<!--Пустая корзина
+<div class="shop-cart" data-shopcart="1">
+    <div class="shop-cart-head"><b>Корзина</b></div>
+    <div class="empty">
+        <div class="shop-cart-empty">Пусто</div>
+    </div>
+</div>
+-->
+tpl_separator
+<!--Корзина с товаром
+<div class="shop-cart" data-shopcart="1">
+    <div class="shop-cart-head"><b>Корзина</b></div>
+    <div class="full">
+        <div  style="text-align:right;">
+            <a href="[[+empty_url]]" id="shk_butEmptyCart">Очистить корзину</a>
+        </div>
+        <div class="shop-cart-body">Выбрано: <b>[[+items_total]]</b> [[+plural]]</div>
+        <div style="text-align:right;">Общая сумма: <b>[[+price_total]]</b> [[+currency]]
+        </div>
+        <div class="cart-order">
+            <a href="[[+order_page_url]]" id="shk_butOrder">Оформить заказ</a>
+        </div>
+    </div>
+</div>
+-->
+================================================
+]]
+
+
+<div class="media-object-section">
+    <span class="backet__header">Корзина</span>
+    <span class="backet__text"><a href="[[+order_page_url]]">пуста</a></span>
+</div>
+<!--tpl_separator-->
+
+<div class="media-object-section">
+    <span class="backet__header">Корзина</span>
+    <span class="backet__text"><a href="[[+order_page_url]]">всего: [[+items_total]]шт.</a></span>
+</div>
+

@@ -1,0 +1,31 @@
+[[-
+Чанк оформления заказа
+[[!$order-checkout]]
+&validate=`address:required,fullname:required,email:email:required,phone:required`
+
+]]
+
+
+
+
+[[!FormIt?
+&hooks=`spam,shk_fihook,email,FormItAutoResponder,redirect`
+&submitVar=`order`
+&emailTpl=`shopOrderReport`
+&fiarTpl=`shopOrderReport`
+&emailSubject=`В интернет-магазине "[[#[[++setting]].site__name]]" сделан новый заказ`
+&fiarSubject=`Вы сделали заказ в интернет-магазине "[[#[[++setting]].site__name]]"`
+&emailTo=`[[++emailsender]]`
+&fiarReplyTo=`[[++emailsender]]`
+&fiarFrom=`[[++emailsender]]`
+&fiarToField=`email`
+&errTpl=`<br/><span class="error">[[+error]]</span>`
+&redirectTo=`33`
+]]
+
+
+[[!If?subject=`[[+shk.items_total]]`&operator=`GT`&operand=`0`&then=`
+[[!$order-checkout__form]]`
+&else=`[[$order-success]]`
+]]
+

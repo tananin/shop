@@ -1,0 +1,110 @@
+[[-
+Строк товара в корзине сайта
+вызывается через плэйсхолдэр [[+inner]]
+
+Плэйсхолдеры
+---------------------------------------------------------------
+[[+name]]                   название товара;
+[[+id]]                     ID товара;
+[[+url]]                    ссылка на страницу товара;
+[[+price]]                  цена товара;
+[[+price_total]]            общая цена товара, включая доп. параметры;
+[[+price_count]]            цена товара, умнженная на кол-во;
+[[+price_count_total]]      общая цена товара с параметрами, умноженная на кол-во;
+[[+currency]]               валюта товара;
+[[+count]]                  количество товара;
+[[+index]]                  порядковый номер товара в корзине от нуля;
+[[+num]]                    порядковый номер товара в корзине от единицы;
+[[+even]]                   четный или нечетный товар (выводит 1 или 0);
+[[+comma]]                  запятая (выводится между товарами);
+[[+url_del_item]]           ссылка на удаление товара из корзины;
+[[+addit_data]]             дополнительные параметры товара;
+[[+любой TV]]               любой TV-параметр, например [[+image]];
+[[+shk_любой TV]]           любой доп. параметр, выбранный при добавлении товара в корзину (из [[+addit_data]]), например [[+shk_param1]].
+                            Если параметры сделаны в виде чекбоксов, то чтобы вывести отдельно каждый из них, нужно добавлять индекс (номер от нуля)
+                            для параметров следующих за первым.
+                            Пример: [[+shk_param1]], [[+shk_param1_1]], [[+shk_param1_2]] ...
+
+
+Ajax классы управления
+---------------------------------------------------------------
+<input class="shk-count"/>                  Кол-во
+<div class="shk-del"></div>                 Удалить
+===============================================================
+
+Изображение товара:
+[[phpthumbon? &input=`[[+product__img]]` &options=`h=90`]]
+
+
+Пример:
+---------------------------------------------------------------
+<div id="basket_list_1593" class="basket_list shk-item">
+    <div class="image">
+        <div class="basket_pimage">
+            <img class="image" src="[[phpthumbon? &input=`[[+product__img]]` &options=`h=90`]]" alt="[[+name]]" title="[[+name]]"/>
+        </div>
+    </div>
+    <div class="name">
+        <a href="[[~[[+id]]]]">[[+name]]</a>
+    </div>
+    <div class="price">0</div>
+    <div class="cols basket_item_count">
+        <span class="label">Количество:</span>
+
+        <input class="shk-count" type="text" size="2" name="count[]" maxlength="3" title="изменить количество" value="[[+count]]" />
+
+    </div>
+    <div rel="1593" class="buy addto_basket"></div>
+    <div class="all_price" id="pr_all_price_1593">0</div>
+
+    <a href="[[+url_del_item]]" class="shk-del delete">x</a>
+</div>
+===============================================================
+
+]]
+
+
+
+
+
+<div class="basket_list">
+
+    <table class="photo">
+        <tbody>
+        <tr>
+            <td><img class="image" src="[[phpthumbon? &input=`[[+product__img]]` &options=`h=90`]]" alt="[[+name]]" title="[[+name]]"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="name">
+        <tbody>
+        <tr>
+            <td>Картридж<br><a href="[[~[[+id]]]]">[[+name]]<br>[[+product__printer]]</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="price">
+        <div class="title">Цена:</div>
+        <div class="text">[[+price]] <sup>руб.</sup></div>
+    </div>
+
+
+
+    <div class="count_wrap">
+        <div class="title">Количество:</div>
+        <div class="cols basket_item_count">
+            <input class="shk-count" type="text" size="2" name="count[]" maxlength="3" title="изменить количество" value="[[+count]]" />
+
+
+        </div>
+        <div rel="15509" class="buy addto_basket">В корзину</div>
+    </div>
+
+    <div class="all_price" id="pr_all_price_15509">
+        <div class="title">Сумма:</div>
+        <div class="text"><span>[[+price_count_total]]</span> <sup>[[+shk_currency]]</sup></div>
+    </div>
+
+    <div rel="1664" class="delete deletefrom_basket shk-del"></div>
+</div>
